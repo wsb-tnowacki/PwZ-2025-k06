@@ -14,8 +14,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('ogolne.welcome');
 })->name('start');
 Route::get('/kontakt', function () {
-    return view('kontakt');
+    return view('ogolne.kontakt');
 })->name('kontakt');
+Route::get('/onas', function () {
+    $zadania = [
+        'Zadanie 1',
+        'Zadanie 2',
+        'Zadanie 3'
+    ];
+    //return view('ogolne.onas', [ 'zadania' => $zadania]);
+    return view('ogolne.onas', compact('zadania'));
+})->name('onas');
