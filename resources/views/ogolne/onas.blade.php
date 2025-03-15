@@ -7,15 +7,19 @@
         <div>
             {{--
             <ol>
+                @isset($zadania)
                 <?php foreach ($zadania ?? '' as $zadanie ) : ?>
                 <li><?= $zadanie ?></li>
                 <?php endforeach; ?>
+                @endisset 
             </ol>
             --}}
             <ol>
+            @isset($zadania)
             @foreach ($zadania as $zadanie)
                 <li>{{ $zadanie}}</li>
-            @endforeach   
+            @endforeach 
+            @endisset  
             </ol>
            
         </div>
