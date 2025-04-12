@@ -13,6 +13,8 @@ class PostController extends Controller
     public function index()
     {
         //
+        return "index";
+
     }
 
     /**
@@ -20,7 +22,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('post.dodaj');
     }
 
     /**
@@ -29,14 +31,26 @@ class PostController extends Controller
     public function store(Request $request)
     {
         //
+        //return 'store';
+        $request->validate([
+            'tytul' => 'required|min:3|max:200',
+            'autor' => 'required|min:3|max:100',
+            'email' => 'required|min:3|max:200|email:rfc,dns',
+            'tresc' => ['required','min:5']
+        ]);
+        $post = new Post();
+        $post->create($request->all());
+        return redirect()->route('post.index');
     }
 
     /**
      * Display the specified resource.
      */
     public function show(Post $post)
+    //public function show(string $post)
     {
         //
+        echo $post;
     }
 
     /**
