@@ -11,9 +11,11 @@
           <li class="nav-item">
             <a class="nav-link" href="{{ route('kontakt') }}">Kontakt</a>
           </li>
+          @auth
           <li class="nav-item">
             <a class="nav-link" href="{{ route('onas') }}">O nas</a>
-          </li>
+          </li>            
+          @endauth
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Posty
