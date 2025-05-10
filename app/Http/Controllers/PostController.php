@@ -15,7 +15,8 @@ class PostController extends Controller
     {
         //
         //return "index";
-        return view('post.lista');
+        $posty = Post::all();
+        return view('post.lista', compact('posty'));
 
     }
 
@@ -59,7 +60,8 @@ class PostController extends Controller
     //public function show(string $post)
     {
         //
-        echo $post;
+
+        return view('post.pokaz', compact('post'));
     }
 
     /**
@@ -67,15 +69,17 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+       return view('post.edytuj', compact('post'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Post $post)
+    public function update(PostStoreRequest $request, Post $post)
     {
-        //
+        //return "Update $post";
+        $post->update($request->all());
+        return redirect()->route('post.index')->with('message','Zmieniono poprawnie posta');
     }
 
     /**
