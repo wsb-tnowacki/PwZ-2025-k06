@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('tytul',200);
             $table->string('autor',100);
             $table->string('email',200);
-            $table->text('tresc',200);
+            $table->text('tresc');
             $table->timestamps();
         });
     }

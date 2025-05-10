@@ -1,3 +1,6 @@
-<div>
-    <!-- It is never too late to be what you might have been. - George Eliot -->
-</div>
+@extends('layout.layout')
+@section('tytul','Lista postów')
+@section('podtytul', 'Lista postów')
+@section('tresc')
+    Lista postów
+@endsection

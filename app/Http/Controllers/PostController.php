@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PostStoreRequest;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -13,7 +14,8 @@ class PostController extends Controller
     public function index()
     {
         //
-        return "index";
+        //return "index";
+        return view('post.lista');
 
     }
 
@@ -28,19 +30,26 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    //public function store(Request $request)
+    public function store(PostStoreRequest $request)
     {
         //
         //return 'store';
-        $request->validate([
+/*         $request->validate([
             'tytul' => 'required|min:3|max:200',
             'autor' => 'required|min:3|max:100',
             'email' => 'required|min:3|max:200|email:rfc,dns',
             'tresc' => ['required','min:5']
-        ]);
+        ]); */
         $post = new Post();
+    /*     $post->tytul = request('tytul');
+        $post->email = $request['email'];
+        $post->autor = request('autor');
+        $post->tresc = request('tresc');
+        $post->save(); */
         $post->create($request->all());
-        return redirect()->route('post.index');
+        return redirect()->route('post.index')->with('message',"Dodano poprawnie");
+        //return "ok";
     }
 
     /**
