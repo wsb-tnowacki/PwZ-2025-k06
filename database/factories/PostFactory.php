@@ -16,8 +16,12 @@ class PostFactory extends Factory
      */
     public function definition(): array
     {
-        return [
-            //
+return [
+            'tytul' => fake()->sentence(fake()->numberBetween(2,7)),
+            'autor' => fake()->name(),
+            'email' => fake()->freeEmail(),
+            'tresc' => fake()->text(),
+            'created_at' => fake()->dateTime()
         ];
     }
 }
