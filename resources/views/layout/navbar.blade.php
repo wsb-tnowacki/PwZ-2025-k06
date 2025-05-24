@@ -22,7 +22,10 @@
             </a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="{{route('post.index')}}">Lista postów</a></li>
-              <li><a class="dropdown-item" href="{{route('post.create')}}">Dodaj post</a></li>
+              @auth
+              <li><a class="dropdown-item" href="{{route('post.create')}}">Dodaj post</a></li>                
+              @endauth
+
             </ul>
           </li>
         </ul>

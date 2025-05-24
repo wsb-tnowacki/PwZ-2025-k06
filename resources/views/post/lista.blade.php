@@ -8,17 +8,23 @@
     <th scope="col">Tytuł</th>
     <th scope="col">Autor</th>
     <th scope="col">Data powstania</th>
-    <th scope="col">Akcja</th>
+    @auth
+    <th scope="col">Akcja</th>        
+    @endauth
+
 </thead>
 <tbody>
     @isset($posty)
     @if($posty->count())
+   {{--  @php($lp=1) --}}
+   @php($lp=$posty->firstItem())
     @foreach ($posty as $post)
     <tr>
-       <td>{{$post->id}}</td> 
+       <td>{{$lp++}}</td> 
        <td><a href="{{route('post.show',$post->id)}}">{{$post->tytul}}</a></td>
        <td>{{$post->autor}}</td>
        <td>{{date('j F Y',strtotime($post->created_at))}}</td>
+       @auth
        <td class="d-flex">
                         <a href="{{route('post.edit', $post->id)}}">
                             <button class="btn btn-success m-1" type="submit">E</button>
@@ -28,7 +34,9 @@
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger m-1" type="submit">X</button>
                         </form>
-                    </td>
+        </td>           
+       @endauth
+
     </tr>
         
     @endforeach
@@ -44,4 +52,7 @@
     @endisset
 </tbody>
    </table>
+   <div>
+    {{$posty->links()}}
+   </div>
 @endsection

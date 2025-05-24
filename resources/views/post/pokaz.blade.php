@@ -30,13 +30,17 @@
     <label for="tresc" class="form-label">Treść</label>
     <textarea name="tresc" class="form-control" id="tresc" name="tresc" cols="4" rows="5" disabled>{{$post->tresc}}</textarea>
   </div>
+  @auth
   <a href="{{route('post.edit', $post->id)}}"><button class="btn btn-success m-1" type="submit">Edytuj post</button></a>
   <form action="{{route('post.destroy', $post->id)}}" method="post" onsubmit="return confirm('Czy na pewno usunąć ten post? ')">
             @csrf
             @method('DELETE')
             <button type="submit" class="btn btn-danger m-1" type="submit">Usuń</button>
         </form>
-</form>
+          @endauth
+  
+
+
 @endisset
 <a href="{{route('post.index')}}"><button class="btn btn-primary m-1" type="submit">Powrót do listy</button></a>
 @endsection
